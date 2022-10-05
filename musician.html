@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>assignment about music</title>
+</head>
+ 
+<body>
+<h1>musician guess by Siva bajee babu porandla</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="secret_musician">Enter the secret Musician name </label>
+    <input type ="password" id="secret_musician" name="secretName" min=10 max=50 step=2 value="Jhon Lennon"> <br>
+
+    <label for="guess_musician">Guess the Musician </label>
+    <input type ="text" id="guess_musician" name="guessMusician" autofocus> <br>
+
+    <input type="button" onclick="checkGuess()" value="Check the Guess">
+</form>
+
+<p id="result">Your result will show here </p>
+
+<div class="container">
+    <img src="1.jpg" id="image" onclick="swapImage()" alt="Netwing" style="width: 100px;height: 100px;">
+</div>
+
+<script> 
+
+        let correct=0;
+        let wrong=0;
+        use_image=1
+    
+        function  checkGuess(){
+           console.log("Getting form values")
+            SecretMusician = document.getElementById("secret_musician").value
+            guess = document.getElementById("guess_musician").value 
+            
+            if(SecretMusician==guess){
+                correct+=1;
+                alert("You got it right");
+            } else {
+                wrong+=1;
+                alert("Wrong Musicain");
+            }
+            
+           document.getElementById("result").innerHTML="correct "+correct+"  wrong "+wrong;
+        }
+    
+    let use_Image=1
+    img=document.getElementById("image")
+    function swapImage(){
+        switch(use_Image){
+            case 1:
+                img.src="2.jpg"
+                use_Image+=1;
+                break;
+            case 2:
+                img.src="3.jpg"
+                use_Image+=1;
+                break;
+            case 3:
+                img.src="1.jpg"
+                use_Image=1;
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</body>
+</html> 

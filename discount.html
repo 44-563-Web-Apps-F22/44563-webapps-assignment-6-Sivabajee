@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>SIVA BAJEE BABU PORANDLA computes 
+    discounts</h2>
+
+    <form>
+        <label for="base amount">Enter the base Amount </label>
+        <input type ="num" id="base amount" name="base amount" min=10 max=50 step=2 value=20> <br>
+    
+        <label for="discount percentage">Enter Discount percentage </label>
+        <input type ="number" id="discount percentage" name="discount percentage" min=10 max=50 step=2 value=10> <br>
+    
+        <input type="button" onclick="discount()" value="Apply discount">
+    </form>
+    <p id="result">This text will be replaced </p>
+    <form  >
+        <input type="radio" id="times" name="color" value="times">
+        <label for="times">*</label></br>
+      
+        <input type="radio" id="divide" name="color"  value="divide">
+        <label for="divide">/</label></br>
+      
+        <input type="radio" id="exponent" name="color" value="exponent">
+        <label for="exponent">**</label></br>
+    
+        <input type="button" class="btn btn-success" onclick="chooseOp()" value="Give it the value">
+      </form>
+    
+    <p id="result1">This text will be replaced </p>
+    
+    <script> 
+    
+    function discount(){   
+                baseAmount = document.getElementById("base amount").value
+                discountPercentage = document.getElementById("discount percentage").value
+                let output = ""
+                for (i = 1; i <= 5; i++) {
+                    let discountedAmount = baseAmount - (baseAmount * (discountPercentage / 100))
+                    output = output + (discountedAmount * i + " ")}
+                document.getElementById("result").innerHTML ="Discounted amounts for base " + baseAmount + " are : "+ output
+            }
+    function chooseOp(){
+        
+            baseAmount = document.getElementById("base amount").value
+            discountPercentage = document.getElementById("discount percentage").value
+            times = document.getElementById("times").checked
+            divide = document.getElementById("divide").checked
+            exponent = document.getElementById("exponent").checked
+            out = document.getElementById("result")
+            if(times==true)
+                result = baseAmount*discountPercentage
+            if(divide==true)
+                result = baseAmount/discountPercentage
+            if(exponent==true)
+                result = baseAmount**discountPercentage
+            
+            document.getElementById("result1").innerHTML = "RESULT IS : "+ result
+            }
+    
+    </script>
+
+</body>
+</html> 
