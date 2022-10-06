@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html>
- 
+ <title>vacation to a city</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <body>
 
-<h2>Getting input</h2>
+<h2>SIVA BAJEE BABU PORANDLA Selects a Vacation</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <input type="checkbox" id="air" name="topping1"   style="background-color: yellow;"
+          value="True">
+        <label for="Air">Travel by Air</label></br>
+      
+    <input type="checkbox" id="dom" name="topping2" style="background-color: aqua;"
+           value="True">
+        <label for="domestic">Domestic</label></br>
+      
+    <input type="checkbox" id="resort" name="topping3"   
+           value="False">
+        <label for="resort">Resort</label></br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <input type="button"class="btn btn-secondary"  type="button" onclick="selectVacation()" value="Select a Vacation">
+</form>
+<form>
+    <label for="property">Enter a city</label>
+    <input type ="text" id="property" name="property" value="city"> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <label for="check">Enter price</label>
+    <input type ="text" id="value" name="check"><br>
+
+    <input type="button" class="btn btn-secondary" type="button" onclick="updateVacation()" value="Update the Vacation">
 </form>
 
 
@@ -20,20 +40,39 @@
 
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+var my_vacation={air:true,domestic:true,resort:true}
+function selectVacation(){
+    my_vacation={}
+    air = document.getElementById("air").value
+    dom = document.getElementById("dom").value
+    resort = document.getElementById("resort").value
+    ou = document.getElementById("result")
+    if(document.getElementById("air").checked){
+        my_vacation.air=true
+      }
+    else{
+        my_vacation.air=false
     }
+    if(document.getElementById("dom").checked){
+        my_vacation.domestic=true        
+      }
+    else{
+        my_vacation.domestic=false
+    }
+    if(document.getElementById("resort").checked){
+        my_vacation.resort=true
+      }
+    else{my_vacation.resort=false}
+    ou.innerHTML=JSON.stringify(my_vacation)    
 }
+function updateVacation(){
+        var s=document.getElementById("property").value
+        var p=document.getElementById("value").value
+        my_vacation[s]=p
+        ou.innerHTML=JSON.stringify(my_vacation)
+    }
 </script>
 
+
 </body>
-</html> 
+</html>
